@@ -9,8 +9,8 @@ function MainCanvas() {
         <>
             <div style={{ height: '100vh', width: '100vw' }}>
                 <InterfaceContextProvider>
-                    {/* <Interface/> */}
-                    <Canvas gl={{ antialias: true, alpha: false }} camera={{ fov: 75, position: [4, 5, 4] }}>
+                    <Interface/>
+                    <Canvas gl={{ antialias: true, alpha: false }} camera={{ fov: 75, position: [0, 1, 4] }}>
                         <CameraProvider>
                             <MainScene />
                         </CameraProvider>

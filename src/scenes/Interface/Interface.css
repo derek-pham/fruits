@@ -1,88 +1,13 @@
-.intro-overlay {
+.overlay-window {
     position: fixed;
-    top: 0;
     left: 0;
-    height: 100vh;
-    width: 100%;
-    background-color: peachpuff;
+    top: 0;
     z-index: 5;
-    display: grid;
-    align-items: center;
-    justify-items: center;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
 }
 
-.intro-overlay.fadeOutAnim {
-    animation: fadeout 0.75s ease-in-out forwards;
-}
-
-.loading-circle {
-    transition: transform 1.5s ease-in-out;
-    border: 16px solid peachpuff;
-    border-top: 16px solid darksalmon;
-    border-bottom: 16px solid darksalmon;
-    animation: spin 1.25s linear infinite;
-    border-radius: 50%;
-    width: 120px;
-    height: 120px;
-}
-
-.loading-circle.shrinkCircle {
-    animation: spin 1.25s linear infinite,
-        shrink 1.25s ease-in-out forwards;
-}
-
-.loading-circle.expandCircle {
-    width: 0px;
-    height: 0px;
-    border: 16px solid darksalmon;
-    background-color: darksalmon;
-    animation: expand 0.75s ease-in-out 0.5s forwards, fadeout 1s ease-in-out 1.3s forwards;
-}
-
-@keyframes fadeout {
-    from {
-        opacity: 1;
-    }
-
-    to {
-        opacity: 0;
-    }
-}
-
-@keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-@keyframes shrink {
-    0% {
-        width: 120px;
-        height: 120px;
-    }
-
-    10% {
-        width: 130px;
-        height: 130px;
-    }
-
-    100% {
-        width: 0px;
-        height: 0px;
-        border: 16px solid darksalmon;
-    }
-}
-
-@keyframes expand {
-    0% {
-        transform: scale(1);
-    }
-
-    100% {
-        transform: scale(100);
-    }
+.overlay-window h1{
+    pointer-events: auto;
 }
