@@ -1,36 +1,22 @@
 /* eslint-disable react/no-unknown-property */
-import { OrthographicCamera, OrbitControls, useHelper } from "@react-three/drei"
+import { OrbitControls, PerspectiveCamera } from "@react-three/drei"
 import { useFrame, useThree } from "@react-three/fiber"
-import { CameraHelper } from "three"
-import * as THREE from 'three'
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef } from "react"
 import { useCameraContext } from "./CameraControls/CameraContext"
-import { useInterfaceContext } from "./Interface/InterfaceContext"
 
 
 function MainCamera() {
     const cameraRef = useRef();
     const controlsRef = useRef();
-    const [cameraHasInitialized, setCameraHasInitialized] = useState(true)
     const { size } = useThree()
-    // console.log(size)
 
     const {
-        zoom,
-        smoothedZoom,
         cameraTarget,
         smoothedCameraTarget,
         cameraPosition,
         smoothedCameraPosition,
-        cameraSpeed,
-        objectOfFocus
+        cameraSpeed
     } = useCameraContext()
-
-    const {
-        setTriggerNoteFor,
-        triggerNoteFor
-    } = useInterfaceContext()
-
 
     // useHelper(cameraRef, CameraHelper);
 
@@ -50,29 +36,29 @@ function MainCamera() {
         return () => window.removeEventListener('resize', handleResize)
     }, [size])
 
+    useFrame((state, delta) => {
+        smoothedCameraTarget.lerp(cameraTarget, cameraSpeed.x)
+        smoothedCameraPosition.lerp(cameraPosition, cameraSpeed.y)
 
-
-    function initiateCamera() {
-        if (!cameraHasInitialized) {
-            return
-        } else {
-            if (cameraRef.current) {
-                cameraRef.current.position.set(8, 10, 8);
-                cameraRef.current.lookAt(cameraTarget);
-                cameraRef.current.updateProjectionMatrix()
-                // console.log(cameraRef.current);
-            }
-            if (controlsRef.current) {
-                controlsRef.current.target.set(-5, 2, -5);
-                controlsRef.current.update(); // Ensure controls are updated with new target
-            }
-            setCameraHasInitialized(false)
+        // Log every two seconds
+        if (state.clock.elapsedTime % 3 >= 2.995) {
+            // console.log(cameraRef.current.position.distanceTo(cameraPosition))
+            // console.log(Math.floor(cameraRef.current.position.distanceTo(cameraPosition)))
         }
-    }
+
+        // Moving the camera
+        if (cameraRef.current) {
+            cameraRef.current.position.copy(smoothedCameraPosition);
+            cameraRef.current.lookAt(smoothedCameraTarget);
+            cameraRef.current.updateProjectionMatrix();
+        }
+    })
+
 
     return (
         <>
-            <OrbitControls ref={controlsRef} makeDefault/>
+            <OrbitControls ref={controlsRef} />
+            <PerspectiveCamera makeDefault position={[0, 2, 6]} ref={cameraRef} />
         </>
     )
 }
