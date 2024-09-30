@@ -6,9 +6,12 @@ const InterfaceContext = createContext();
 export const useInterfaceContext = () => useContext(InterfaceContext);
 
 export const InterfaceContextProvider = ({ children }) => {
+    const [listNumber, setListNumber] = useState(0)
 
     return (
         <InterfaceContext.Provider value={{
+            listNumber,
+            setListNumber
         }}
         >
             {children}
