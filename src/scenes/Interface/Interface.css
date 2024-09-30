@@ -11,3 +11,16 @@
 .overlay-window * {
     pointer-events: auto; /* Enable pointer events for all children */
 }
+
+.info-window {
+    position: relative;
+    left: 66%;
+    top: -100px;
+    width: 34vw;
+    background-color: rgba(36, 36, 36, 0.8);
+    height: 100%;
+}
+
+.info-text {
+    margin: 1em;
+}
