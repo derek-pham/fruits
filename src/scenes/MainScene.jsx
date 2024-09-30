@@ -14,7 +14,7 @@ function MainScene() {
     const { moveCameraTo } = useCameraContext()
 
     useEffect(() => {
-        moveCameraTo(null, [listNumber * 1.75, 2, 6], [listNumber * 1.75, 0, 0])
+        moveCameraTo(null, [listNumber * 2, 2, 6], [listNumber * 2, 0, 0])
     }, [listNumber])
 
     return (
@@ -22,10 +22,10 @@ function MainScene() {
             <MainCamera />
             <color args={['#242424']} attach={'background'} />
             <Apple position={[0, 0, 0]} />
-            <Banana position={[1.75, 0, 0]} />
-            <Strawberry position={[3.25, 0, 0]} />
-            <Grape position={[4.75, 0, 0]} />
-            <Grid args={[10, 10]} position={[0, -1, 0]} />
+            <Banana position={[2, 0, 0]} />
+            <Strawberry position={[4, 0, 0]} />
+            <Grape position={[6, 0, 0]} />
+            {/* <Grid args={[10, 10]} position={[0, -1, 0]} /> */}
         </>
     );
 }
