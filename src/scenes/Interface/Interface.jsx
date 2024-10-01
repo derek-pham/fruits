@@ -2,16 +2,19 @@ import { useEffect, useState } from 'react'
 import './Interface.css'
 import { useInterfaceContext } from './InterfaceContext'
 import fruitInfoText from './fruitInfoText'
+import uiClickSFX from '/sfx/ui-click.mp3'
 
 function Interface() {
     const { listNumber, setListNumber } = useInterfaceContext()
     const [infoText, setInfoText] = useState(fruitInfoText[0])
+    const audio = new Audio(uiClickSFX)
 
     function incrementForward() {
         if (listNumber === 3) {
             return;
         }
         setListNumber(prev => prev + 1)
+        audio.play()
     }
 
     function incrementBackward() {
@@ -19,6 +22,7 @@ function Interface() {
             return;
         }
         setListNumber(prev => prev - 1);
+        audio.play()
     }
 
     useEffect(() => {
