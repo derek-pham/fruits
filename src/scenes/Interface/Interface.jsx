@@ -5,8 +5,11 @@ import fruitInfoText from './fruitInfoText'
 import uiClickSFX from '/sfx/ui-click.mp3'
 
 function Interface() {
+    const listOfFruit = ['Apple','Banana','Strawberry','Grape']
+
     const { listNumber, setListNumber } = useInterfaceContext()
     const [infoText, setInfoText] = useState(fruitInfoText[0])
+    const [infoTitle, setInfoTitle] = useState(listOfFruit[0])
     const audio = new Audio(uiClickSFX)
     audio.volume = 0.3;
 
@@ -28,6 +31,7 @@ function Interface() {
 
     useEffect(() => {
         setInfoText(fruitInfoText[listNumber])
+        setInfoTitle(listOfFruit[listNumber])
     }, [listNumber])
 
     return (
@@ -39,7 +43,7 @@ function Interface() {
                     <button className='button-go-right' onClick={incrementForward}><img src="/icons/left.png" /></button>
                 </div>
                 <div className='info-window'>
-                    <h2>FRUIT</h2>
+                    <h2>{infoTitle}</h2>
                     <p className='info-text'>
                         {infoText}
                     </p>
