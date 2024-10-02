@@ -9,7 +9,8 @@
 }
 
 .overlay-window * {
-    pointer-events: auto; /* Enable pointer events for all children */
+    pointer-events: auto;
+    /* Enable pointer events for all children */
 }
 
 .info-window {
@@ -23,4 +24,35 @@
 
 .info-text {
     margin: 1em;
+}
+
+.left-right-buttons {
+    display: flex;
+    justify-content: center; 
+    align-items: center;     
+    gap: 1%;                 
+}
+
+.overlay-window .left-right-buttons button {
+    height: 48px;
+    width: 48px;
+    padding: 0;
+    margin: 0;
+}
+
+.overlay-window .left-right-buttons button img {
+    height: 40px;
+    width: 40px;
+    filter: invert(1);
+}
+
+.button-go-left,
+.button-go-right {
+    display: flex;          
+    align-items: center;     
+    justify-content: center; 
+}
+
+.button-go-right img {
+    transform: scaleX(-1);
 }

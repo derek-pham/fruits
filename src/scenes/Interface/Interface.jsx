@@ -8,6 +8,7 @@ function Interface() {
     const { listNumber, setListNumber } = useInterfaceContext()
     const [infoText, setInfoText] = useState(fruitInfoText[0])
     const audio = new Audio(uiClickSFX)
+    audio.volume = 0.3;
 
     function incrementForward() {
         if (listNumber === 3) {
@@ -33,9 +34,9 @@ function Interface() {
         <>
             <div className='overlay-window'>
                 <h4>CURRENT NUMBER: {listNumber}</h4>
-                <div>
-                    <button onClick={incrementBackward}>Left</button>
-                    <button onClick={incrementForward}>Right</button>
+                <div className='left-right-buttons'>
+                    <button className='button-go-left' onClick={incrementBackward}><img src="/icons/left.png" /></button>
+                    <button className='button-go-right' onClick={incrementForward}><img src="/icons/left.png" /></button>
                 </div>
                 <div className='info-window'>
                     <h2>FRUIT</h2>
