@@ -3,6 +3,7 @@ import './Interface.css'
 import { useInterfaceContext } from './InterfaceContext'
 import fruitInfoText from './fruitInfoText'
 import uiClickSFX from '/sfx/ui-click.mp3'
+import HiddenText from './HiddenText/HiddenText'
 
 function Interface() {
     const listOfFruit = ['Apple','Banana','Strawberry','Grape']
@@ -44,6 +45,7 @@ function Interface() {
                 </div>
                 <div className='info-window'>
                     <h2>{infoTitle}</h2>
+                    <HiddenText/>
                     <p className='info-text'>
                         {infoText}
                     </p>
