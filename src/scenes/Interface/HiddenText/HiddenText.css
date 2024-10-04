@@ -9,7 +9,8 @@
             #E72C00 60px);
     background-size: 200% 200%;
     animation: barberpole 15s linear infinite;
-    height: 100px;
+    margin-top: 1em;
+    height: auto;
     display: grid;
     align-items: center;
     justify-items: center;
@@ -62,10 +63,19 @@
     transition: clip-path 0.5s ease;
     clip-path: circle(0px at center);
     position: fixed;
+    overflow: hidden;
+}
+
+.transformed-circle {
+    background-color: #242424;
+    transition: clip-path 1.5s ease-in-out 0.5s;
+    clip-path: circle(500px at center);
+    position: fixed;
+    overflow: hidden;
 }
 
 .circle.transform-circle {
-    animation: expandCircle 1.5s ease-in-out 0.25s forwards;
+    animation: expandCircle 1.5s ease-in-out 0.5s forwards;
 }
 
 @keyframes expandCircle {
