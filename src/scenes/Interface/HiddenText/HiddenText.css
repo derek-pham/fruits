@@ -10,7 +10,7 @@
     background-size: 200% 200%;
     animation: barberpole 15s linear infinite;
     margin-top: 1em;
-    height: auto;
+    /* height: auto; */
     display: grid;
     align-items: center;
     justify-items: center;
@@ -23,8 +23,8 @@
 }
 
 .hidden-text-inner {
-    height: 90%;
-    width: 98%;
+    height: calc(100% - 12px);
+    width: calc(100% - 12px);
     background-color: rgba(60, 10, 0, 0.55);
     display: grid;
     align-items: center;
@@ -36,6 +36,7 @@
     height: 64px;
     opacity: 0.8;
     transition: opacity 0.1s ease, transform 0.1s ease;
+    position: fixed;
 }
 
 .lock-icon:hover {
@@ -62,8 +63,10 @@
     background-color: #242424;
     transition: clip-path 0.5s ease;
     clip-path: circle(0px at center);
-    position: fixed;
+    position: relative;
     overflow: hidden;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .transformed-circle {

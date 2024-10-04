@@ -12,7 +12,7 @@ function HiddenText({ text, isUnlocked, toggleLock }) {
     const [circleDivHeight, setCircleDivHeight] = useState('')
     const [hiddenTextInnerDivWidth, setHiddenTextInnerDivWidth] = useState('')
     const [hiddenTextInnerDivHeight, setHiddenTextInnerDivHeight] = useState('')
-    const [hiddenTextDivHeight, setHiddenTextDivHeight] = useState('200px')
+    const [hiddenTextDivHeight, setHiddenTextDivHeight] = useState('')
 
     const updateCircleSize = () => {
         if (hiddenTextInnerDivRef.current && hiddenTextDivRef.current) {
@@ -53,7 +53,6 @@ function HiddenText({ text, isUnlocked, toggleLock }) {
     useEffect(() => {
         // Initial size setting
         updateCircleSize()
-
     }, [hiddenTextDivHeight])
 
     return (
