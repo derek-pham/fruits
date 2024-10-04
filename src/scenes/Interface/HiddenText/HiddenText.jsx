@@ -3,7 +3,7 @@ import { useRef, useState, useEffect } from 'react'
 import HiddenTextImg from './HiddenTextImg'
 import './HiddenText.css'
 
-function HiddenText({ text, isUnlocked, toggleLock }) {
+function HiddenText({ text, isUnlocked, toggleLock, fruit }) {
     const hiddenTextDivRef = useRef(null)
     const hiddenTextInnerDivRef = useRef(null)
     const infoTextDivRef = useRef(null)
@@ -56,7 +56,7 @@ function HiddenText({ text, isUnlocked, toggleLock }) {
     }, [hiddenTextDivHeight])
 
     return (
-        <div className='hidden-text' ref={hiddenTextDivRef}
+        <div className={`hidden-text ${fruit}`} ref={hiddenTextDivRef}
             style={{
                 height: hiddenTextDivHeight,
             }}

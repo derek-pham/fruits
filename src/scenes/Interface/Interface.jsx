@@ -57,12 +57,14 @@ function Interface() {
                         text={fruitInfoText['apple'][0]}
                         isUnlocked={unlockedText.apple[0]}
                         toggleLock={() => toggleLock('apple', 0)}
+                        fruit={'apple'}
                     />
                     <HiddenText
                         key="apple2"
                         text={fruitInfoText['apple'][1]}
                         isUnlocked={unlockedText.apple[1]}
                         toggleLock={() => toggleLock('apple', 1)}
+                        fruit={'apple'}
                     />
                 </>;
             case 'Banana':
@@ -72,12 +74,14 @@ function Interface() {
                         text={fruitInfoText['banana'][0]}
                         isUnlocked={unlockedText.banana[0]}
                         toggleLock={() => toggleLock('banana', 0)}
+                        fruit={'banana'}
                     />
                     <HiddenText
                         key="banana2"
                         text={fruitInfoText['banana'][1]}
                         isUnlocked={unlockedText.banana[1]}
                         toggleLock={() => toggleLock('banana', 1)}
+                        fruit={'banana'}
                     />
                 </>;
             case 'Strawberry':
@@ -87,12 +91,14 @@ function Interface() {
                         text={fruitInfoText['strawberry'][0]}
                         isUnlocked={unlockedText.strawberry[0]}
                         toggleLock={() => toggleLock('strawberry', 0)}
+                        fruit={'strawberry'}
                     />
                     <HiddenText
                         key="strawberry2"
                         text={fruitInfoText['strawberry'][1]}
                         isUnlocked={unlockedText.strawberry[1]}
                         toggleLock={() => toggleLock('strawberry', 1)}
+                        fruit={'strawberry'}
                     />
                 </>;
             case 'Grape':
@@ -102,12 +108,14 @@ function Interface() {
                         text={fruitInfoText['grape'][0]}
                         isUnlocked={unlockedText.grape[0]}
                         toggleLock={() => toggleLock('grape', 0)}
+                        fruit={'grape'}
                     />
                     <HiddenText
                         key="grape2"
                         text={fruitInfoText['grape'][1]}
                         isUnlocked={unlockedText.grape[1]}
                         toggleLock={() => toggleLock('grape', 1)}
+                        fruit={'grape'}
                     />
                 </>;
             default:

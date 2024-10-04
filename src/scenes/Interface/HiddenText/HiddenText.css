@@ -1,19 +1,55 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
 .hidden-text {
-    background-color: tomato;
-    background: repeating-linear-gradient(45deg,
-            #FF9307,
-            #FFA837 30px,
-            #FF3100 30px,
-            #E72C00 60px);
-    background-size: 200% 200%;
-    animation: barberpole 15s linear infinite;
     margin-top: 1em;
     /* height: auto; */
     display: grid;
     align-items: center;
     justify-items: center;
+}
+
+.hidden-text.apple {
+    background-color: tomato;
+    background: repeating-linear-gradient(45deg,
+            #25C45B,
+            #FFB830 30px,
+            #FF5030 30px,
+            #FF7258 60px);
+    background-size: 200% 200%;
+    animation: barberpole 15s linear infinite;
+}
+
+.hidden-text.banana {
+    background-color: tomato;
+    background: repeating-linear-gradient(45deg,
+            #FFEF4D,
+            #FFE800 30px,
+            #44E500 30px,
+            #7CF449 60px);
+    background-size: 200% 200%;
+    animation: barberpole 15s linear infinite;
+}
+
+.hidden-text.strawberry {
+    background-color: tomato;
+    background: repeating-linear-gradient(45deg,
+            #FF0D00,
+            #FF564D 30px,
+            #E0006E 30px,
+            #F52289 60px);
+    background-size: 200% 200%;
+    animation: barberpole 15s linear infinite;
+}
+
+.hidden-text.grape {
+    background-color: tomato;
+    background: repeating-linear-gradient(45deg,
+            #0E0EC8,
+            #4040ED 30px,
+            #7106C3 30px,
+            #992EEB 60px);
+    background-size: 200% 200%;
+    animation: barberpole 15s linear infinite;
 }
 
 @keyframes barberpole {
