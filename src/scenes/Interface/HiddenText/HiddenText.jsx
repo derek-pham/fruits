@@ -2,8 +2,9 @@
 import { useRef, useState, useEffect } from 'react'
 import HiddenTextImg from './HiddenTextImg'
 import './HiddenText.css'
+import 'animate.css';
 
-function HiddenText({ text, isUnlocked, toggleLock, fruit }) {
+function HiddenText({ text, isUnlocked, toggleLock, fruit, hasPoppedAnim, togglePopLock }) {
     const hiddenTextDivRef = useRef(null)
     const hiddenTextInnerDivRef = useRef(null)
     const infoTextDivRef = useRef(null)
@@ -13,6 +14,7 @@ function HiddenText({ text, isUnlocked, toggleLock, fruit }) {
     const [hiddenTextInnerDivWidth, setHiddenTextInnerDivWidth] = useState('')
     const [hiddenTextInnerDivHeight, setHiddenTextInnerDivHeight] = useState('')
     const [hiddenTextDivHeight, setHiddenTextDivHeight] = useState('')
+    const [bounceText, setBounceText] = useState('')
 
     const updateCircleSize = () => {
         if (hiddenTextInnerDivRef.current && hiddenTextDivRef.current) {
@@ -74,12 +76,19 @@ function HiddenText({ text, isUnlocked, toggleLock, fruit }) {
                         height: circleDivHeight,
                     }}
                 >
-                    <div className='info-text' ref={infoTextDivRef}>{text}</div>
+                    <div
+                        className={`info-text ${bounceText} ${hasPoppedAnim && 'unlocked'}`}
+                        ref={infoTextDivRef}
+                        onAnimationEnd={() => togglePopLock()}
+                    >
+                        {text}
+                    </div>
                 </div>
                 <HiddenTextImg
                     setTransformCircle={setTransformCircle}
                     toggleLock={toggleLock}
                     isUnlocked={isUnlocked}
+                    setBounceText={setBounceText}
                 />
             </div>
         </div>
