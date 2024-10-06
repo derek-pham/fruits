@@ -1,12 +1,17 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react"
+import uiUnlockSFX from '/sfx/ui-unlock.wav'
 
 function HiddenTextImg({ setTransformCircle, toggleLock, isUnlocked }) {
     const [unlockAnim, setUnlockAnim] = useState('')
     const [lockIconUrl, setLockIconUrl] = useState('/icons/lock.png')
     const [renderIcon, setRenderIcon] = useState(!isUnlocked)
 
+    const audio = new Audio(uiUnlockSFX)
+    audio.volume = 0.4;
+
     const handleUnlockAnim = () => {
+        audio.play()
         setUnlockAnim('unlock-anim')
         setLockIconUrl('/icons/unlock.png')
         setTransformCircle('transform-circle')
