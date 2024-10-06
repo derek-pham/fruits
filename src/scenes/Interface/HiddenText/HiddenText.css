@@ -113,12 +113,20 @@
     overflow: hidden;
 }
 
-.circle.transform-circle {
-    animation: expandCircle 1.5s ease-in-out 0.5s forwards;
+.info-text {
+    margin: 10px;
+    font-family: "Kanit", sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    font-style: normal;
+    color: hsl(0, 0%, 0%, 0);
 }
 
-@keyframes expandCircle {
-    100% {
-        clip-path: circle(500px at center);
-    }
+.info-text.bounce-in {
+    color: rgba(255, 255, 255, 0.87);
+    animation: bounceIn 0.75s ease-out forwards;
+}
+
+.info-text.unlocked {
+    color: rgba(255, 255, 255, 0.87);
 }

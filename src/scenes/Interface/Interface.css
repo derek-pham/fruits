@@ -27,19 +27,11 @@
     border-radius: 20px;
 }
 
-.info-text {
-    margin: 10px;
-    font-family: "Kanit", sans-serif;
-    font-size: 20px;
-    font-weight: 300;
-    font-style: normal;
-}
-
 .left-right-buttons {
     display: flex;
-    justify-content: center; 
-    align-items: center;     
-    gap: 1%;                 
+    justify-content: center;
+    align-items: center;
+    gap: 1%;
 }
 
 .overlay-window .left-right-buttons button {
@@ -57,9 +49,9 @@
 
 .button-go-left,
 .button-go-right {
-    display: flex;          
-    align-items: center;     
-    justify-content: center; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .button-go-right img {
