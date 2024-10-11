@@ -3,6 +3,8 @@ import { useRef, useState, useEffect } from 'react'
 import HiddenTextImg from './HiddenTextImg'
 import './HiddenText.css'
 import 'animate.css';
+import uiPopSFX from '/sfx/ui-pop.wav'
+import uiPopSFX2 from '/sfx/ui-pop-high.wav'
 
 function HiddenText({ text, isUnlocked, toggleLock, fruit, hasPoppedAnim, togglePopLock }) {
     const hiddenTextDivRef = useRef(null)
@@ -15,6 +17,12 @@ function HiddenText({ text, isUnlocked, toggleLock, fruit, hasPoppedAnim, toggle
     const [hiddenTextInnerDivHeight, setHiddenTextInnerDivHeight] = useState('')
     const [hiddenTextDivHeight, setHiddenTextDivHeight] = useState('')
     const [bounceText, setBounceText] = useState('')
+
+    const audioSound1 = new Audio(uiPopSFX)
+    audioSound1.volume = 0.3;
+    const audioSound2 = new Audio(uiPopSFX2)
+    audioSound2.volume = 0.3;
+    const audio = [audioSound1, audioSound2]
 
     const updateCircleSize = () => {
         if (hiddenTextInnerDivRef.current && hiddenTextDivRef.current) {
@@ -57,6 +65,13 @@ function HiddenText({ text, isUnlocked, toggleLock, fruit, hasPoppedAnim, toggle
         updateCircleSize()
     }, [hiddenTextDivHeight])
 
+    const playPopSound = () => {
+        const popSound = audio[Math.floor(Math.random() * 2)]
+        if (bounceText === 'bounce-in') {
+            popSound.play()
+        }
+    }
+
     return (
         <div className={`hidden-text ${fruit}`} ref={hiddenTextDivRef}
             style={{
@@ -80,6 +95,7 @@ function HiddenText({ text, isUnlocked, toggleLock, fruit, hasPoppedAnim, toggle
                         className={`info-text ${bounceText} ${hasPoppedAnim && 'unlocked'}`}
                         ref={infoTextDivRef}
                         onAnimationEnd={() => togglePopLock()}
+                        onAnimationStart={() => playPopSound()}
                     >
                         {text}
                     </div>

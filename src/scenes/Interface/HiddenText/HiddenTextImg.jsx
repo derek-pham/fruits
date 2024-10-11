@@ -8,7 +8,7 @@ function HiddenTextImg({ setTransformCircle, toggleLock, isUnlocked, setBounceTe
     const [renderIcon, setRenderIcon] = useState(!isUnlocked)
 
     const audio = new Audio(uiUnlockSFX)
-    audio.volume = 0.4;
+    audio.volume = 0.2;
 
     const handleUnlockAnim = () => {
         audio.play()
