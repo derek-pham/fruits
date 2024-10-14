@@ -4,6 +4,7 @@ import { useGLTF } from "@react-three/drei";
 import { useInterfaceContext } from "../Interface/InterfaceContext";
 import { useEffect, useRef, useState } from "react";
 import { RigidBody, Physics } from '@react-three/rapier'
+import sliceSFX from '/sfx/slice-1.wav'
 
 function AppleSplit({ position = [0, 0, 0] }) {
     const { listNumber } = useInterfaceContext()
@@ -18,7 +19,11 @@ function AppleSplit({ position = [0, 0, 0] }) {
     const appleSplitFrontMaterial = appleSplitFront.material; // Extract front material
     const appleSplitBackMaterial = appleSplitBack.material;
 
-    const cubeJump = () => {
+    const audio = new Audio(sliceSFX)
+    audio.volume = 0.2;
+
+    const sliceFruit = () => {
+        audio.play()
         setAppleFrontRigidBodyState('')
         setTimeout(() => {
             appleSplitFrontRef.current.applyImpulse({ x: 0, y: 20, z: 10 })
@@ -56,7 +61,7 @@ function AppleSplit({ position = [0, 0, 0] }) {
                             position={position}
                             geometry={appleSplitFront.geometry}
                             scale={itemScale}
-                            onClick={cubeJump}
+                            onClick={sliceFruit}
                             material={appleSplitFrontMaterial}
                         >
                         </mesh>
