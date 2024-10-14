@@ -7,11 +7,14 @@ export const useInterfaceContext = () => useContext(InterfaceContext);
 
 export const InterfaceContextProvider = ({ children }) => {
     const [listNumber, setListNumber] = useState(0)
+    const [crossSectionView, setCrossSectionView] = useState(false)
 
     return (
         <InterfaceContext.Provider value={{
             listNumber,
-            setListNumber
+            setListNumber,
+            crossSectionView,
+            setCrossSectionView
         }}
         >
             {children}
