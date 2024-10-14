@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-unknown-property */
-import { useGLTF } from "@react-three/drei";
+import { useGLTF, Html } from "@react-three/drei";
 import { useInterfaceContext } from "../Interface/InterfaceContext";
 import { useEffect, useRef, useState } from "react";
 import { RigidBody, Physics } from '@react-three/rapier'
@@ -10,6 +10,7 @@ function AppleSplit({ position = [0, 0, 0] }) {
     const { listNumber } = useInterfaceContext()
     const [itemScale, setItemScale] = useState(2)
     const [renderFront, setRenderFront] = useState(true)
+    const [renderHtml, setRenderHtml] = useState(true)
     const { scene } = useGLTF('/models/appleSplit.glb'); // load the model
     const appleSplitFrontRef = useRef()
     const appleSplitFront = scene.children[0].children[1].children[0]
@@ -25,6 +26,7 @@ function AppleSplit({ position = [0, 0, 0] }) {
     const sliceFruit = () => {
         audio.play()
         setAppleFrontRigidBodyState('')
+        setRenderHtml(false)
         setTimeout(() => {
             appleSplitFrontRef.current.applyImpulse({ x: 0, y: 20, z: 10 })
             appleSplitFrontRef.current.applyTorqueImpulse({ x: 4, y: Math.random(), z: Math.random() })
@@ -64,6 +66,19 @@ function AppleSplit({ position = [0, 0, 0] }) {
                             onClick={sliceFruit}
                             material={appleSplitFrontMaterial}
                         >
+                            {renderHtml &&
+                                <Html center>
+                                    <div
+                                        style={{
+                                            width: '225px',
+                                            height: '225px',
+                                            borderRadius: '100px',
+                                            cursor: 'url(icons/french-knife.png), auto',
+                                        }}
+                                        onClick={sliceFruit}
+                                    ></div>
+                                </Html>
+                            }
                         </mesh>
                     </RigidBody>
                 </Physics>
