@@ -7,7 +7,14 @@ import HiddenText from './HiddenText/HiddenText'
 
 function Interface() {
     const listOfFruit = ['Apple', 'Banana', 'Strawberry', 'Grape']
-    const { listNumber, setListNumber } = useInterfaceContext()
+    
+    const {
+        listNumber,
+        setListNumber,
+        crossSectionView,
+        setCrossSectionView
+    } = useInterfaceContext()
+
     const [infoTitle, setInfoTitle] = useState(listOfFruit[0])
     const [unlockedText, setUnlockedText] = useState({
         apple: [false, false],
@@ -38,6 +45,11 @@ function Interface() {
             return;
         }
         setListNumber(prev => prev - 1);
+        audio.play()
+    }
+
+    function moveUpwards() {
+        setCrossSectionView(!crossSectionView);
         audio.play()
     }
 
@@ -73,7 +85,7 @@ function Interface() {
                         isUnlocked={unlockedText.apple[0]}
                         hasPoppedAnim={poppedText.apple[0]}
                         togglePopLock={() => togglePopLock('apple', 0)}
-                        toggleLock={() => toggleLock('apple', 0)}                       
+                        toggleLock={() => toggleLock('apple', 0)}
                         fruit={'apple'}
                     />
                     <HiddenText
@@ -82,7 +94,7 @@ function Interface() {
                         isUnlocked={unlockedText.apple[1]}
                         hasPoppedAnim={poppedText.apple[1]}
                         togglePopLock={() => togglePopLock('apple', 1)}
-                        toggleLock={() => toggleLock('apple', 1)}                    
+                        toggleLock={() => toggleLock('apple', 1)}
                         fruit={'apple'}
                     />
                 </>;
@@ -162,6 +174,7 @@ function Interface() {
                     <button className='button-go-left' onClick={incrementBackward}><img src="/icons/left.png" /></button>
                     <button className='button-go-right' onClick={incrementForward}><img src="/icons/left.png" /></button>
                 </div>
+                <button onClick={moveUpwards}>Cross Section</button>
                 <div className='info-window'>
                     <h2>{infoTitle}</h2>
                     {renderContent()}
