@@ -39,7 +39,7 @@ function MainCamera() {
     useFrame((state, delta) => {
         smoothedCameraTarget.lerp(cameraTarget, cameraSpeed.x)
         smoothedCameraPosition.lerp(cameraPosition, cameraSpeed.y)
-
+        // console.log(cameraRef.current.position)
         // Log every two seconds
         if (state.clock.elapsedTime % 3 >= 2.995) {
             // console.log(cameraRef.current.position.distanceTo(cameraPosition))
@@ -58,7 +58,7 @@ function MainCamera() {
     return (
         <>
             <OrbitControls ref={controlsRef} />
-            <PerspectiveCamera makeDefault position={[0, 2, 6]} ref={cameraRef} />
+            <PerspectiveCamera makeDefault position={[0, 2.5, 6]} ref={cameraRef} />
         </>
     )
 }

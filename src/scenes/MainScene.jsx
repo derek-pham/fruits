@@ -15,15 +15,15 @@ function MainScene() {
     const { moveCameraTo } = useCameraContext()
 
     useEffect(() => {
-        moveCameraTo(null, [listNumber * 2, 2, 6], [listNumber * 2, 0, 0])
+        moveCameraTo(null, [0, listNumber * -2.5 + 2 + 0.25, 6], [0, listNumber * -2.5 - 0.25, 0])
     }, [listNumber])
 
     useEffect(() => {
-        const verticalOffset = 5
+        const verticalOffset = 11
         if (crossSectionView) {
-            moveCameraTo(null, [listNumber * 2, 2 + verticalOffset, 6], [listNumber * 2, 0 + verticalOffset, 0])
+            moveCameraTo(null, [verticalOffset, listNumber * -2.5 + 2 + 0.25, 6], [verticalOffset, listNumber * -2.5 - 0.25, 0])
         } else {
-            moveCameraTo(null, [listNumber * 2, 2, 6], [listNumber * 2, 0, 0])
+            moveCameraTo(null, [0, listNumber * -2.5 + 2 + 0.25, 6], [0, listNumber * -2.5 - 0.25, 0])
         }
     }, [crossSectionView])
 
@@ -31,11 +31,11 @@ function MainScene() {
         <>
             <MainCamera />
             <color args={['#242424']} attach={'background'} />
-            <Apple position={[0, 0, 0]} />
-            <AppleSplit position={[0, 5, 0]} />
-            <Banana position={[2, 0, 0]} />
-            <Strawberry position={[4, 0, 0]} />
-            <Grape position={[6, 0, 0]} />
+            <Apple position={[-1.5, 0, 0]} />
+            <AppleSplit position={[10, 0, 0]} />
+            <Banana position={[-1.5, -2.5, 0]} />
+            <Strawberry position={[-1.5, -5, 0]} />
+            <Grape position={[-1.5, -7.5, 0]} />
             {/* <Grid args={[10, 10]} position={[0, -1, 0]} /> */}
         </>
     );

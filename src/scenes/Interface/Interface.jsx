@@ -170,9 +170,9 @@ function Interface() {
         <>
             <div className='overlay-window'>
                 <h4>CURRENT NUMBER: {listNumber}</h4>
-                <div className='left-right-buttons'>
-                    <button className='button-go-left' onClick={incrementBackward}><img src="/icons/left.png" /></button>
-                    <button className='button-go-right' onClick={incrementForward}><img src="/icons/left.png" /></button>
+                <div className='up-down-buttons'>
+                    <button className='button-go-up' onClick={incrementBackward}><img src="/icons/left.png" /></button>
+                    <button className='button-go-down' onClick={incrementForward}><img src="/icons/left.png" /></button>
                 </div>
                 <button onClick={moveUpwards}>Cross Section</button>
                 <div className='info-window'>

@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { createContext, useContext, useRef, useState } from 'react';
+import React, { createContext, useContext, useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 
 const CameraContext = createContext();
@@ -11,11 +11,11 @@ export const CameraProvider = ({ children }) => {
     const controlsRef = useRef();
     const lerpValue = (start, end, t) => start + (end - start) * t;
 
-    const [cameraTarget, setCameraTarget] = useState(() => new THREE.Vector3(0, 0, 0))
-    const [smoothedCameraTarget] = useState(() => new THREE.Vector3(0, 0, 0));
+    const [cameraTarget, setCameraTarget] = useState(() => new THREE.Vector3(0, -0.25, 0))
+    const [smoothedCameraTarget] = useState(() => new THREE.Vector3(0, - 0.25, 0));
 
-    const [cameraPosition, setCameraPosition] = useState(() => new THREE.Vector3(0, 2, 6))
-    const [smoothedCameraPosition] = useState(() => new THREE.Vector3(0, 2, 6));
+    const [cameraPosition, setCameraPosition] = useState(() => new THREE.Vector3(0, 2.5, 6))
+    const [smoothedCameraPosition] = useState(() => new THREE.Vector3(0, 2.5, 6));
 
     const [cameraSpeed, setCameraSpeed] = useState(() => new THREE.Vector3(0.03, 0.03, 0.03))
 
@@ -34,6 +34,10 @@ export const CameraProvider = ({ children }) => {
             position[2]
         ));
     }
+
+    useEffect(() => {
+        setCameraPosition(prevPosition => prevPosition.set(0, 2.5, 6));
+    }, [])
 
     return (
         <CameraContext.Provider value={{

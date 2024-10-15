@@ -27,33 +27,40 @@
     border-radius: 20px;
 }
 
-.left-right-buttons {
-    display: flex;
+.up-down-buttons {
+    position: absolute;
+    top: calc(50% - 48px);
+    left: 2%;
+    display: grid;
     justify-content: center;
     align-items: center;
     gap: 1%;
 }
 
-.overlay-window .left-right-buttons button {
+.overlay-window .up-down-buttons button {
     height: 48px;
     width: 48px;
     padding: 0;
     margin: 0;
 }
 
-.overlay-window .left-right-buttons button img {
+.overlay-window .up-down-buttons button img {
     height: 40px;
     width: 40px;
     filter: invert(1);
 }
 
-.button-go-left,
-.button-go-right {
+.button-go-up,
+.button-go-down {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.button-go-right img {
-    transform: scaleX(-1);
+.button-go-up img {
+    transform: rotate(90deg);
+}
+
+.button-go-down img {
+    transform: rotate(270deg);
 }
