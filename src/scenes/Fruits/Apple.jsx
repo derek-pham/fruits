@@ -2,24 +2,29 @@
 /* eslint-disable react/no-unknown-property */
 import { useGLTF, useAnimations } from "@react-three/drei";
 import { useInterfaceContext } from "../Interface/InterfaceContext";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useFrame } from "@react-three/fiber"
+import * as THREE from 'three';
 
-function Apple({ position = [0, 0, 0] }) {
+function Apple() {
     const { listNumber } = useInterfaceContext()
     const [itemScale, setItemScale] = useState(2)
     const { scene, animations } = useGLTF('/models/apple.glb'); // load the model
     const { actions } = useAnimations(animations, scene);  // Set up the animation actions
+    const fruitRef = useRef()
+    const [position, setPosition] = useState(() => new THREE.Vector3(-10 - 1.5, 0, 0))
+    const [smoothedPosition] = useState(() => new THREE.Vector3(-10 - 1.5, 0, 0));
 
     useEffect(() => {
         // Play the 'appleSpin' animation
         actions['appleMeshSpin'].play();
-
         return () => {
             actions['appleMeshSpin'].stop(); // Clean up on unmount
         };
     }, [actions]);
 
     useEffect(() => {
+        setPosition(prevPosition => prevPosition.set(-10 - 1.5, listNumber * 2.5, 0));
         if (listNumber == 0) {
             setItemScale(2);
         } else {
@@ -27,9 +32,14 @@ function Apple({ position = [0, 0, 0] }) {
         }
     }, [listNumber]);
 
+    useFrame((state, delta) => {
+        smoothedPosition.lerp(position, 0.03)
+        fruitRef.current.position.copy(smoothedPosition)
+    })
+
     return (
         <>
-            <primitive object={scene} scale={itemScale} position={position} />
+            <primitive ref={fruitRef} object={scene} scale={itemScale} position={[-10 - 1.5, listNumber, 0]} />
         </>
     );
 }

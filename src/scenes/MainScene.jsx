@@ -11,24 +11,15 @@ import { useCameraContext } from "./CameraControls/CameraContext";
 import { useEffect } from "react";
 
 function MainScene() {
-    const { listNumber, crossSectionView } = useInterfaceContext()
+    const { crossSectionView } = useInterfaceContext()
     const { moveCameraTo } = useCameraContext()
-
-    useEffect(() => {
-        if (crossSectionView) {
-            const horizontalOffset = 1
-            moveCameraTo(null, [horizontalOffset, listNumber * -2.5 + 2 + 0.25, 6], [horizontalOffset, listNumber * -2.5 - 0.25, 0])
-        } else {
-            moveCameraTo(null, [-10, listNumber * -2.5 + 2 + 0.25, 6], [-10, listNumber * -2.5 - 0.25, 0])
-        }
-    }, [listNumber])
 
     useEffect(() => {
         const horizontalOffset = 1
         if (crossSectionView) {
-            moveCameraTo(null, [horizontalOffset, listNumber * -2.5 + 2 + 0.25, 6], [horizontalOffset, listNumber * -2.5 - 0.25, 0])
+            moveCameraTo(null, [horizontalOffset, 2.5, 6], [horizontalOffset, -0.25, 0])
         } else {
-            moveCameraTo(null, [-10, listNumber * -2.5 + 2 + 0.25, 6], [-10, listNumber * -2.5 - 0.25, 0])
+            moveCameraTo(null, [-10, 2.5, 6], [-10, -0.25, 0])
         }
     }, [crossSectionView])
 
