@@ -30,10 +30,15 @@ function Interface() {
         grape: [false, false],
     });
 
-    const audio = new Audio(uiClickSFX)
-    audio.volume = 0.3;
+    const audioRef = useRef(new Audio(uiClickSFX));
+    useEffect(() => {
+        const audio = audioRef.current;
+        audio.volume = 0.3; // Set volume only once
+    }, []);
 
     function incrementForward() {
+        const audio = audioRef.current;
+        audio.currentTime = 0
         if (listNumber === 3) {
             return;
         }
@@ -42,6 +47,8 @@ function Interface() {
     }
 
     function incrementBackward() {
+        const audio = audioRef.current;
+        audio.currentTime = 0
         if (listNumber === 0) {
             return;
         }
@@ -50,11 +57,12 @@ function Interface() {
     }
 
     function moveToCrossSection() {
+        const audio = audioRef.current;
         setCrossSectionView(!crossSectionView);
         audio.play()
     }
 
-    useEffect(()=> {
+    useEffect(() => {
         if (crossSectionView) {
             setInvertImg('active')
         } else {
