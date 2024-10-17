@@ -15,7 +15,12 @@ function MainScene() {
     const { moveCameraTo } = useCameraContext()
 
     useEffect(() => {
-        moveCameraTo(null, [0, listNumber * -2.5 + 2 + 0.25, 6], [0, listNumber * -2.5 - 0.25, 0])
+        if (crossSectionView) {
+            const verticalOffset = 11
+            moveCameraTo(null, [verticalOffset, listNumber * -2.5 + 2 + 0.25, 6], [verticalOffset, listNumber * -2.5 - 0.25, 0])
+        } else {
+            moveCameraTo(null, [0, listNumber * -2.5 + 2 + 0.25, 6], [0, listNumber * -2.5 - 0.25, 0])
+        }
     }, [listNumber])
 
     useEffect(() => {

@@ -7,7 +7,7 @@ import HiddenText from './HiddenText/HiddenText'
 
 function Interface() {
     const listOfFruit = ['Apple', 'Banana', 'Strawberry', 'Grape']
-    
+
     const {
         listNumber,
         setListNumber,
@@ -15,6 +15,7 @@ function Interface() {
         setCrossSectionView
     } = useInterfaceContext()
 
+    const [invertImg, setInvertImg] = useState('')
     const [infoTitle, setInfoTitle] = useState(listOfFruit[0])
     const [unlockedText, setUnlockedText] = useState({
         apple: [false, false],
@@ -48,10 +49,18 @@ function Interface() {
         audio.play()
     }
 
-    function moveUpwards() {
+    function moveToCrossSection() {
         setCrossSectionView(!crossSectionView);
         audio.play()
     }
+
+    useEffect(()=> {
+        if (crossSectionView) {
+            setInvertImg('active')
+        } else {
+            setInvertImg('')
+        }
+    }, [crossSectionView])
 
     const toggleLock = (fruit, index) => {
         setUnlockedText(prevState => ({
@@ -174,7 +183,7 @@ function Interface() {
                     <button className='button-go-up' onClick={incrementBackward}><img src="/icons/left.png" /></button>
                     <button className='button-go-down' onClick={incrementForward}><img src="/icons/left.png" /></button>
                 </div>
-                <button onClick={moveUpwards}>Cross Section</button>
+                <button className={`cross-section invert-${invertImg}`} onClick={moveToCrossSection}><img className={invertImg} src="/icons/slice-fruit.png" /></button>
                 <div className='info-window'>
                     <h2>{infoTitle}</h2>
                     {renderContent()}

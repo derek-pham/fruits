@@ -34,7 +34,7 @@
     display: grid;
     justify-content: center;
     align-items: center;
-    gap: 1%;
+    gap: 4px;
 }
 
 .overlay-window .up-down-buttons button {
@@ -57,10 +57,43 @@
     justify-content: center;
 }
 
+.button-go-up:focus,
+.button-go-down:focus,
+.cross-section:focus {
+    outline: none;
+}
+
 .button-go-up img {
     transform: rotate(90deg);
 }
 
 .button-go-down img {
     transform: rotate(270deg);
+}
+
+.cross-section {
+    position: absolute;
+    padding: 0;
+    width: 48px;
+    height: 48px;
+    top: calc(50% - 24px + 2px);
+    left: calc(2% + 48px * 1.1);
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.cross-section img {
+    width: 32px;
+    height: 32px;
+    filter: invert(1);
+    pointer-events: none;
+}
+
+.cross-section img.active {
+    filter: invert(0);
+}
+
+.cross-section.invert-active {
+    background-color: rgba(255, 255, 255, 0.87);
 }
