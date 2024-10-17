@@ -58,7 +58,7 @@ function MainCamera() {
     return (
         <>
             <OrbitControls ref={controlsRef} />
-            <PerspectiveCamera makeDefault position={[0, 2.5, 6]} ref={cameraRef} />
+            <PerspectiveCamera makeDefault position={[-10, 2.5, 6]} ref={cameraRef} />
         </>
     )
 }

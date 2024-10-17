@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-unknown-property */
-import { useGLTF, Html } from "@react-three/drei";
+import { useGLTF, Html, PresentationControls } from "@react-three/drei";
 import { useInterfaceContext } from "../Interface/InterfaceContext";
 import { useEffect, useRef, useState } from "react";
 import { RigidBody, Physics } from '@react-three/rapier'
@@ -47,15 +47,20 @@ function AppleSplit({ position = [0, 0, 0] }) {
 
     return (
         <>
-            <mesh
-                castShadow
-                position={position}
-                geometry={appleSplitBack.geometry}
-                scale={itemScale}
-                material={appleSplitBackMaterial}
+            <PresentationControls
+                polar={[-0.4, 0.2]}
+                azimuth={[-1, 0.75]}
+                snap={{ mass: 1, tension: 100 }}
             >
-            </mesh>
-
+                <mesh
+                    castShadow
+                    position={position}
+                    geometry={appleSplitBack.geometry}
+                    scale={itemScale}
+                    material={appleSplitBackMaterial}
+                >
+                </mesh>
+            </PresentationControls>
             {renderFront &&
                 <Physics>
                     <RigidBody type={appleFrontRigidBodyState} ref={appleSplitFrontRef}>

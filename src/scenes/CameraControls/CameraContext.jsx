@@ -11,11 +11,11 @@ export const CameraProvider = ({ children }) => {
     const controlsRef = useRef();
     const lerpValue = (start, end, t) => start + (end - start) * t;
 
-    const [cameraTarget, setCameraTarget] = useState(() => new THREE.Vector3(0, -0.25, 0))
-    const [smoothedCameraTarget] = useState(() => new THREE.Vector3(0, - 0.25, 0));
+    const [cameraTarget, setCameraTarget] = useState(() => new THREE.Vector3(-10, -0.25, 0))
+    const [smoothedCameraTarget] = useState(() => new THREE.Vector3(-10, - 0.25, 0));
 
-    const [cameraPosition, setCameraPosition] = useState(() => new THREE.Vector3(0, 2.5, 6))
-    const [smoothedCameraPosition] = useState(() => new THREE.Vector3(0, 2.5, 6));
+    const [cameraPosition, setCameraPosition] = useState(() => new THREE.Vector3(-10, 2.5, 6))
+    const [smoothedCameraPosition] = useState(() => new THREE.Vector3(-10, 2.5, 6));
 
     const [cameraSpeed, setCameraSpeed] = useState(() => new THREE.Vector3(0.03, 0.03, 0.03))
 
@@ -36,7 +36,7 @@ export const CameraProvider = ({ children }) => {
     }
 
     useEffect(() => {
-        setCameraPosition(prevPosition => prevPosition.set(0, 2.5, 6));
+        setCameraPosition(prevPosition => prevPosition.set(-10, 2.5, 6));
     }, [])
 
     return (

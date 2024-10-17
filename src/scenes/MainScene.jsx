@@ -16,19 +16,19 @@ function MainScene() {
 
     useEffect(() => {
         if (crossSectionView) {
-            const verticalOffset = 11
-            moveCameraTo(null, [verticalOffset, listNumber * -2.5 + 2 + 0.25, 6], [verticalOffset, listNumber * -2.5 - 0.25, 0])
+            const horizontalOffset = 1
+            moveCameraTo(null, [horizontalOffset, listNumber * -2.5 + 2 + 0.25, 6], [horizontalOffset, listNumber * -2.5 - 0.25, 0])
         } else {
-            moveCameraTo(null, [0, listNumber * -2.5 + 2 + 0.25, 6], [0, listNumber * -2.5 - 0.25, 0])
+            moveCameraTo(null, [-10, listNumber * -2.5 + 2 + 0.25, 6], [-10, listNumber * -2.5 - 0.25, 0])
         }
     }, [listNumber])
 
     useEffect(() => {
-        const verticalOffset = 11
+        const horizontalOffset = 1
         if (crossSectionView) {
-            moveCameraTo(null, [verticalOffset, listNumber * -2.5 + 2 + 0.25, 6], [verticalOffset, listNumber * -2.5 - 0.25, 0])
+            moveCameraTo(null, [horizontalOffset, listNumber * -2.5 + 2 + 0.25, 6], [horizontalOffset, listNumber * -2.5 - 0.25, 0])
         } else {
-            moveCameraTo(null, [0, listNumber * -2.5 + 2 + 0.25, 6], [0, listNumber * -2.5 - 0.25, 0])
+            moveCameraTo(null, [-10, listNumber * -2.5 + 2 + 0.25, 6], [-10, listNumber * -2.5 - 0.25, 0])
         }
     }, [crossSectionView])
 
@@ -36,12 +36,12 @@ function MainScene() {
         <>
             <MainCamera />
             <color args={['#242424']} attach={'background'} />
-            <Apple position={[-1.5, 0, 0]} />
-            <AppleSplit position={[10, 0, 0]} />
-            <Banana position={[-1.5, -2.5, 0]} />
-            <Strawberry position={[-1.5, -5, 0]} />
-            <Grape position={[-1.5, -7.5, 0]} />
-            {/* <Grid args={[10, 10]} position={[0, -1, 0]} /> */}
+            <Apple position={[-1.5 - 10, 0, 0]} />
+            <AppleSplit position={[10 - 10, 0, 0]} />
+            <Banana position={[-1.5 - 10, -2.5, 0]} />
+            <Strawberry position={[-1.5 - 10, -5, 0]} />
+            <Grape position={[-1.5 - 10, -7.5, 0]} />
+            {/* <Grid args={[20, 5]} position={[0, -1, 0]} /> */}
         </>
     );
 }
