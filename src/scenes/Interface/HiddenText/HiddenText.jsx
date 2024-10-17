@@ -105,6 +105,7 @@ function HiddenText({ text, isUnlocked, toggleLock, fruit, hasPoppedAnim, toggle
                     toggleLock={toggleLock}
                     isUnlocked={isUnlocked}
                     setBounceText={setBounceText}
+                    hiddenTextInnerDivHeight={hiddenTextInnerDivHeight}
                 />
             </div>
         </div>

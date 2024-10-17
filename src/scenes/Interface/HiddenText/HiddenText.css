@@ -72,7 +72,7 @@
     height: 64px;
     opacity: 0.8;
     transition: opacity 0.1s ease, transform 0.1s ease;
-    position: fixed;
+    position: relative;
 }
 
 .lock-icon:hover {
@@ -81,7 +81,7 @@
 }
 
 .unlock-anim {
-    animation: unlockIconAnim .75s ease-out forwards;
+    animation: unlockIconAnim 0.75s ease-out forwards;
 }
 
 @keyframes unlockIconAnim {
@@ -109,7 +109,7 @@
     background-color: #242424;
     transition: clip-path 1.5s ease-in-out 0.5s;
     clip-path: circle(500px at center);
-    position: fixed;
+    position: relative;
     overflow: hidden;
 }
 

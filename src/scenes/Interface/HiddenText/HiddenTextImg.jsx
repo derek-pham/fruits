@@ -2,7 +2,7 @@
 import { useState } from "react"
 import uiUnlockSFX from '/sfx/ui-unlock.wav'
 
-function HiddenTextImg({ setTransformCircle, toggleLock, isUnlocked, setBounceText }) {
+function HiddenTextImg({ setTransformCircle, toggleLock, isUnlocked, setBounceText, hiddenTextInnerDivHeight }) {
     const [unlockAnim, setUnlockAnim] = useState('')
     const [lockIconUrl, setLockIconUrl] = useState('/icons/lock.png')
     const [renderIcon, setRenderIcon] = useState(!isUnlocked)
@@ -27,7 +27,20 @@ function HiddenTextImg({ setTransformCircle, toggleLock, isUnlocked, setBounceTe
 
     return (
         <>
-            {renderIcon && <img className={`lock-icon ${unlockAnim}`} src={lockIconUrl} onClick={handleUnlockAnim} onAnimationEnd={handleUnlockAnimEnd} />}
+            {renderIcon &&
+                <img className={`lock-icon ${unlockAnim}`}
+                    src={lockIconUrl}
+                    onClick={handleUnlockAnim}
+                    onAnimationEnd={handleUnlockAnimEnd}
+                    style={{
+                        top: unlockAnim ?
+                            `calc((-${hiddenTextInnerDivHeight} - 20px - 16px) / 1.97 - 32px + 20px)` :
+                            `calc((-${hiddenTextInnerDivHeight} - 20px - 16px) / 1.97 - 32px)`,
+                        // top: `calc((-${hiddenTextInnerDivHeight} - 20px - 16px) / 1.97 - 32px)`,
+                        position: 'relative'
+                    }}
+                />
+            }
         </>
     )
 }
